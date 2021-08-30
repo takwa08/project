@@ -7,7 +7,7 @@
       <div class="inner-header flex">
       <!--Just the logo.. Don't mind this-->
 
-      <h3> <img src="assets/cni.png" alt=""> </h3>
+      <figure><img src="assets/cni.png" alt=""></figure><figcaption>المركز الوطني للإعلامية</figcaption>
       </div>
 
       <!--Waves Container-->
@@ -35,11 +35,11 @@
       <!--Content starts-->
       <div class="content flex">
 
-        <form  #loginform ="ngForm" [formGroup]="form" (ngSubmit)="loginAdmin()">
+        <form  #loginform ="ngForm" [formGroup]="form" (ngSubmit)="loginAdmin(admin.email)">
           <div class="form-group">
 
             <label class="control-label">Email</label>
-          <input type="mail"  [(ngModel)] = "admin.email" formControlName="Email" required/>
+          <input type="mail" [(ngModel)] = "admin.email" formControlName="Email" required/>
          </div>
          <div class="form-group">
           <label class="control-label">Password</label>

@@ -13,6 +13,8 @@ import { FooterComponent } from './footer/footer.component';
 import {NgForm} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
+import { EditComponent } from './edit/edit.component';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     GroupComponent,
     StructureComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    EditComponent,
+    HomeComponent
   ],
   imports: [
 FormsModule,
