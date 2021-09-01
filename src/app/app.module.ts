@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { EditComponent } from './edit/edit.component';
 import { HomeComponent } from './home/home.component';
+import { AddComponent } from './add/add.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { HomeComponent } from './home/home.component';
     FooterComponent,
     NavbarComponent,
     EditComponent,
-    HomeComponent
+    HomeComponent,
+    AddComponent
   ],
   imports: [
 FormsModule,

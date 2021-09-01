@@ -14,11 +14,11 @@ export class LoginComponent implements OnInit {
   msg:string="";
  admin = new Admin();
   form: FormGroup;
-  sessionValue : string="";
-  localValue : string="";
-// constructor(private _service:LoginService, private _route : Router,private fb:FormBuilder) {
+ sessionValue : string="";
+localValue : string="";
+constructor( private _route : Router,private fb:FormBuilder) {
 
-  constructor(private _route : Router,private fb:FormBuilder) {
+
     this.form=this.fb.group
     (
       { Email:['',
@@ -34,42 +34,12 @@ export class LoginComponent implements OnInit {
     );
   }
   ngOnInit() {
-    localStorage.setItem("FirstName","local -LDAP");
-    sessionStorage.setItem("Session ","Session- LDAP");
-  }
-loginAdmin(email:string)
-{/*this._service.logAdmin(this.admin).subscribe
-  (
-    data=>
-    {
-      sessionStorage.setItem('email',email)
-      console.log("reponse recieved");
-      localStorage.setItem('isConnected','true')
-      console.log(data)*/
-      this._route.navigate(["/EspaceAdministratif"]);
-      console.log(this.form.value);
-    /*  this.sessionValue=sessionStorage.getItem("Second");
-      this.localValue=localStorage.getItem("FirstName");
-      console.log(this.sessionValue);
-      console.log(this.localValue);
-      if(!this.sessionValue )
-      {
-        console.log("session null")
-        return false
-      }
-      else
-      {
-        return true
-      }
-    },
 
-    error =>
-     {
-    console.log("exception occured");
-    this.msg="Bad credentials, please enter valid informations";
-  }
-  )*/
+   // sessionStorage.setItem("Session ","Session- LDAP");
 
+  }
+loginAdmin()
+{
 
 
 }

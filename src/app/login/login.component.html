@@ -35,17 +35,30 @@
       <!--Content starts-->
       <div class="content flex">
 
-        <form  #loginform ="ngForm" [formGroup]="form" (ngSubmit)="loginAdmin(admin.email)">
+        <form  [formGroup]="form" (ngSubmit)="loginAdmin()" >
           <div class="form-group">
 
-            <label class="control-label">Email</label>
-          <input type="mail" [(ngModel)] = "admin.email" formControlName="Email" required/>
+
+          <input type="email"  formControlName="Email" required [ngModel]="admin.email" />
+          <div class="form-text text-muted"
+           *ngIf="form.controls.Email.touched && form.controls.Email.errors?.required">
+            entrez l'email de la societé
+          </div>
+
+        <div class="form-text text-muted"
+        *ngIf="form.controls.Email.touched && form.controls.Email.errors?.email">
+          Email address not well formed.!
+      </div>
+
          </div>
          <div class="form-group">
-          <label class="control-label">Password</label>
-          <input type="password" [(ngModel)] = "admin.password"  formControlName="password" required/>
+
+          <input type="password"  formControlName="password" required [ngModel]="admin.password" />
+          <div *ngIf="form.controls.password.touched && form.controls.password.invalid">
+            le mot de passe doit entre 8-12 caractére
           </div>
-          <button type="submit" class="login-btn">Login</button>
+          </div>
+          <button type="submit" class="login-btn">Connecter</button>
         </form>
       <!--Content ends-->
     </div></div>

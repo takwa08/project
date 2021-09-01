@@ -7,5 +7,10 @@ export class Utilisateur
   matricule:number;
   age:number;
   description:string;
+  email:string
+  codeP:string
+  numTele:string
+  adresse:string
+  ville:string
 constructor(){}
 }
