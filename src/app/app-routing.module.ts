@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccueilAdministratifComponent } from './accueil-administratif/accueil-administratif.component';
+import { AddGrpComponent } from './add-grp/add-grp.component';
 import { AddComponent } from './add/add.component';
+import { EditGrpComponent } from './edit-grp/edit-grp.component';
 import { EditComponent } from './edit/edit.component';
 import { GroupComponent } from './group/group.component';
 import { HomeComponent } from './home/home.component';
@@ -17,8 +19,10 @@ const routes: Routes = [
   {path:'person',component:PersonComponent},
   {path:'structure',component:StructureComponent},
   {path:'group',component:GroupComponent},
-  {path:'edit',component:EditComponent},
-  {path:'addEmp',component:AddComponent}
+  {path:'edit/:id',component:EditComponent},
+  {path:'addEmp',component:AddComponent},
+  {path:'addGrp',component:AddGrpComponent},
+  {path:'editGrp',component:EditGrpComponent}
 
 ];
 

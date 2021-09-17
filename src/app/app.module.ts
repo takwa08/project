@@ -16,6 +16,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { EditComponent } from './edit/edit.component';
 import { HomeComponent } from './home/home.component';
 import { AddComponent } from './add/add.component';
+import { Nav1Component } from './nav1/nav1.component';
+import { AddGrpComponent } from './add-grp/add-grp.component';
+import { EditGrpComponent } from './edit-grp/edit-grp.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +32,10 @@ import { AddComponent } from './add/add.component';
     NavbarComponent,
     EditComponent,
     HomeComponent,
-    AddComponent
+    AddComponent,
+    Nav1Component,
+    AddGrpComponent,
+    EditGrpComponent
   ],
   imports: [
 FormsModule,
@@ -36,6 +43,7 @@ ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule,
+    HttpClientModule
 
 
   ],

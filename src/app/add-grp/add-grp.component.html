@@ -1,0 +1,19 @@
+<app-nav1></app-nav1>
+
+<body>
+<h4>Ajouter un groupe</h4>
+  <form  #addGrp="ngForm" (ngSubmit)="addG(addGrp)">
+      <div>
+        <div class="form-group">
+
+          <input id="name" type="text" name="nomGroup" ngModel>
+          <button type="submit" class="button">Ajouter</button>
+        </div>
+        </div>
+      </form>
+      <div *ngIf="res"  class="alert alert-success alert-white rounded">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <div class="icon"><i class="fa fa-check"></i></div>
+        <strong>Success!</strong> l'employé a été ajouté avec succèes
+        </div>
+</body>

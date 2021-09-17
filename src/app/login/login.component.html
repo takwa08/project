@@ -39,7 +39,7 @@
           <div class="form-group">
 
 
-          <input type="email"  formControlName="Email" required [ngModel]="admin.email" />
+          <input type="email"  formControlName="Email" required  />
           <div class="form-text text-muted"
            *ngIf="form.controls.Email.touched && form.controls.Email.errors?.required">
             entrez l'email de la societé
@@ -53,12 +53,12 @@
          </div>
          <div class="form-group">
 
-          <input type="password"  formControlName="password" required [ngModel]="admin.password" />
+          <input type="password"  formControlName="password" required />
           <div *ngIf="form.controls.password.touched && form.controls.password.invalid">
             le mot de passe doit entre 8-12 caractére
           </div>
           </div>
-          <button type="submit" class="login-btn">Connecter</button>
+          <button type="submit" class="login-btn">دخول</button>
         </form>
       <!--Content ends-->
     </div></div>

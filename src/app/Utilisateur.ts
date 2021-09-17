@@ -12,5 +12,6 @@ export class Utilisateur
   numTele:string
   adresse:string
   ville:string
+  Grp_membre:string
 constructor(){}
 }

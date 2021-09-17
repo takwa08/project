@@ -1,4 +1,7 @@
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { PersonService } from '../person.service';
 import { Utilisateur } from '../Utilisateur';
 
 @Component({
@@ -8,13 +11,24 @@ import { Utilisateur } from '../Utilisateur';
 })
 export class AddComponent implements OnInit {
 u =new Utilisateur
-  constructor() { }
 
-  ngOnInit(): void {
-  }
-  Ajouter()
+constructor(private personServ:PersonService) { }
+alert:boolean=false
+  ngOnInit(): void {}
+  Ajouter(addF:NgForm)
   {
+this.personServ.addEmp(addF.value).subscribe
+(
+  (response:Utilisateur)=>{
+    console.log(response);
 
+
+  },
+ (error:HttpErrorResponse)=>
+ {alert(error.message);}
+
+);
+this.alert=true
   }
 
 }

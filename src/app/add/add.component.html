@@ -1,71 +1,79 @@
 <app-navbar></app-navbar>
 <body>
+
   <div class="container">
 
     <h1 class="title">Ajouter un employé</h1>
-<form (ngSubmit)="Ajouter()">
+    <div *ngIf="alert==true"  class="alert alert-success alert-white rounded">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      <div class="icon"><i class="fa fa-check"></i></div>
+      <strong>Success!</strong> l'employé a été ajouté avec succèes
+      </div>
+
+<form #addF="ngForm" (ngSubmit)="Ajouter(addF) ">
+
     <div class="grid">
       <div class="form-group a">
         <label for="name">Nom</label>
-        <input id="name" type="text" [(ngModel)]= "u.nom">
+        <input id="name" type="text" name="nom" ngModel>
       </div>
 <!-- nom:string;
   prenom: string;
   nom_ar:string;
-  prenom_ar:string;
+   prenom_ar:string;
   matricule:number;
   age:number;
   description:string;-->
       <div class="form-group b">
         <label for="first-name">Prénom</label>
-        <input id="first-name" type="text"  [(ngModel)]= "u.prenom">
+        <input id="first-name" type="text" name="prenom" ngModel >
       </div>
       <div class="form-group a">
         <label for="name">الاسم بالعربية</label>
-        <input id="name" type="text" [(ngModel)]= "u.prenom_ar">
+        <input id="name" type="text" name="prenom_ar" ngModel>
       </div>
 
       <div class="form-group b">
         <label for="first-name">اللقب بالعربية</label>
-        <input id="first-name" type="text" [(ngModel)]= "u.nom_ar">
+        <input id="first-name" type="text" name="prenom_ar" ngModel>
       </div>
       <div class="form-group b">
         <label for="first-name">Matricule</label>
-        <input id="first-name" type="text" [(ngModel)]= "u.matricule">
+        <input id="first-name" type="text" name="matricule" ngModel>
       </div>
       <div class="form-group">
         <label for="zip">Code postal</label>
-        <input id="zip" type="text" [(ngModel)]= "u.codeP">
+  <input id="zip" type="text" name="codeP" ngModel>
       </div>
       <div class="form-group">
         <label for="age">Age</label>
-        <input id="age" type="number" [(ngModel)]= "u.age">
+        <input id="age" type="number" name="age" ngModel>
       </div>
 
       <div class="form-group email-group">
         <label for="email">Email</label>
-        <input id="email" type="text" [(ngModel)]= "u.email">
+        <input id="email" type="text" name="email" ngModel>
       </div>
 
       <div class="form-group phone-group">
         <label for="phone">Téléphone (mobile)</label>
-        <input id="phone" type="text" [(ngModel)]= "u.numTele">
+        <input id="phone" type="text" name="numTele" ngModel>
       </div>
 
 
 
       <div class="form-group">
         <label for="address">Adresse</label>
-        <input id="address" type="text" [(ngModel)]= "u.adresse">
+        <input id="address" type="text" name="adresse" ngModel>
       </div>
 
       <div class="form-group">
         <label for="city">Ville</label>
-        <input id="city" type="text" [(ngModel)]= "u.ville">
+        <input id="city" type="text" name="ville" ngModel>
       </div>
       <div class="textarea-group">
         <label for="bio">Description</label>
-        <textarea id="bio" [(ngModel)]= "u.description"></textarea>
+        <textarea id="bio" name="description" ngModel ></textarea>
       </div>
 
 
@@ -73,7 +81,7 @@
 
 
     <div class="button-container">
-      <button class="button">Ajouter</button>
+      <button class="button" type="submit" id="ok">Ajouter</button>
     </div>
   </form>
   </div>
