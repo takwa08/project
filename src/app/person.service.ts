@@ -20,7 +20,7 @@ public updateEmp(utilisateur :Utilisateur):Observable <Utilisateur>
 return this.http.put <Utilisateur>('http://localhost:8084/edit',utilisateur);
 }
 
-public addEmp(utilisateur:Utilisateur):Observable<Utilisateur>
+public addEmp(utilisateur:Utilisateur):Observable <Utilisateur>
 {
   return this.http.post<Utilisateur>('http://localhost:8084/addEmp',utilisateur);
 }

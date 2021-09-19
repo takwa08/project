@@ -7,7 +7,7 @@
     <div class="grid">
       <div class="form-group a">
         <label for="name">Nom</label>
-        <input id="name" type="text" value="{{u?.nom}}" ngModel="{{u?.nom}}">
+        <input id="name" type="text"  [(ngModel)]="u.nom">
       </div>
 <!-- nom:string;
   prenom: string;
@@ -18,55 +18,59 @@
   description:string;-->
       <div class="form-group b">
         <label for="first-name">Prénom</label>
-        <input id="first-name" type="text" ngModel="{{u?.prenom}}">
+        <input id="first-name" type="text" value="{{u.prenom}}" [(ngModel)]="u.prenom">
       </div>
       <div class="form-group a">
         <label for="name">الاسم بالعربية</label>
-        <input id="name" type="text"  ngModel="{{u?.prenom_ar}}">
+        <input id="name" type="text"  [(ngModel)]="u.prenom_ar">
       </div>
 
       <div class="form-group b">
         <label for="first-name">اللقب بالعربية</label>
-        <input id="first-name" type="text"  ngModel="{{u?.nom_ar}}">
+        <input id="first-name" type="text"  [(ngModel)]="u.nom_ar">
       </div>
       <div class="form-group b">
         <label for="first-name">Matricule</label>
-        <input id="first-name" type="number"  ngModel="{{u?.matricule}}">
+        <input id="first-name" type="number"  [(ngModel)]="u.matricule">
+      </div>
+      <div class="form-group b">
+        <label for="first-name">Affecté au groupe </label>
+        <input id="first-name" type="text" >
       </div>
       <div class="form-group">
         <label for="zip">Code postal</label>
-        <input id="zip" type="number" ngModel="{{u?.codeP}}">
+        <input id="zip" type="number" [(ngModel)]="u.codeP">
       </div>
       <div class="form-group">
         <label for="age">Age</label>
-        <input id="age" type="number" ngModel="{{u?.age}}">
+        <input id="age" type="number" [(ngModel)]="u.age">
       </div>
 
       <div class="form-group email-group">
         <label for="email">Email</label>
-        <input id="email" type="email" ngModel="{{u?.email}}">
+        <input id="email" type="email" [(ngModel)]="u.email">
       </div>
 
       <div class="form-group phone-group">
         <label for="phone">Téléphone (mobile)</label>
         <input id="phone" type="tel" v
-         ngModel="{{u?.numTele}}">
+        [(ngModel)]="u.numTele">
       </div>
 
 
 
       <div class="form-group">
         <label for="address">Adresse</label>
-        <input id="address" type="text" ngModel="{{u?.adresse}}">
+        <input id="address" type="text" [(ngModel)]="u.adresse">
       </div>
 
       <div class="form-group">
         <label for="city">Ville</label>
-        <input id="city" type="text" ngModel="{{u?.ville}}">
+        <input id="city" type="text" [(ngModel)]="u.ville" >
       </div>
       <div class="textarea-group">
         <label for="bio">Description</label>
-        <textarea id="bio"  ngModel="{{u?.description}}" ></textarea>
+        <textarea id="bio" [(ngModel)]="u.description" ></textarea>
       </div>
 
 

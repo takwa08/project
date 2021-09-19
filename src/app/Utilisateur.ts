@@ -1,3 +1,5 @@
+import { Group } from "./group";
+
 export class Utilisateur
 {
   nom:string;
@@ -12,6 +14,7 @@ export class Utilisateur
   numTele:string
   adresse:string
   ville:string
-  Grp_membre:string
+  group:Group
+
 constructor(){}
 }

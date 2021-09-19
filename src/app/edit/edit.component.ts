@@ -11,14 +11,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EditComponent implements OnInit {
 
- public u: Utilisateur;
+  u= new Utilisateur();
 
 
   constructor(private personSer:PersonService,private router:ActivatedRoute) { }
 
   ngOnInit(): void {
    // console.log(this.router.snapshot.params.id);
-   console.log(this.personSer.findEmpBy(this.router.snapshot.params.id));
+  // this.personSer.findEmpBy(this.router.snapshot.params.id);
   this.editR(this.router.snapshot.params.id)
   }
 
@@ -43,6 +43,7 @@ Modifier(Uti:Utilisateur)
     (
       ( response:Utilisateur)=>
       {this.u=response;
+        console.log(this.u)
       },
       (error:HttpErrorResponse)=>{
         alert(error.message);
