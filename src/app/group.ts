@@ -1,8 +1,9 @@
 export class Group{
-  idGrp:number
+  idGrp:number;
   nomGroup:String
-  constructor()
+  constructor(idGrp:number,nomGroup:String)
   {
-
+    
   }
+
 }

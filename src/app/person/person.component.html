@@ -24,19 +24,7 @@
       <th scope="col">Action</th>
     </tr>
   </thead>
-  <tbody><!--  nom:string;
-    prenom: string;
-    nom_ar:string;
-    prenom_ar:string;
-    matricule:number;
-    age:number;
-    description:string;
-    email:string
-    codeP:string
-    numTele:string
-    adresse:string
-    ville:string
-    group:Group-->
+  <tbody>
     <tr *ngFor="let item of employees">
       <th scope="row">{{item.matricule}}</th>
       <td>{{item.nom}}</td>
@@ -47,7 +35,7 @@
        <td>{{item.numTele}}</td>
        <td>{{item.adresse}}</td>
        <td>{{item.email}}</td>
-       <td>{{item.group.nomGroup}}</td>
+     <td>{{item.group.nomGroup}}</td>
        <td>{{item.codeP}}</td>
        <td>{{item.ville}}</td>
         <td>{{item.description}}</td>

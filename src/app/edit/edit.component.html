@@ -1,87 +1,95 @@
 <app-navbar></app-navbar>
 <body>
+
   <div class="container">
 
-    <h1 class="title">Modifier profil</h1>
-<form >
-    <div class="grid">
-      <div class="form-group a">
-        <label for="name">Nom</label>
-        <input id="name" type="text"  [(ngModel)]="u.nom">
-      </div>
-<!-- nom:string;
-  prenom: string;
-  nom_ar:string;
-  prenom_ar:string;
-  matricule:number;
-  age:number;
-  description:string;-->
-      <div class="form-group b">
-        <label for="first-name">Prénom</label>
-        <input id="first-name" type="text" value="{{u.prenom}}" [(ngModel)]="u.prenom">
-      </div>
-      <div class="form-group a">
-        <label for="name">الاسم بالعربية</label>
-        <input id="name" type="text"  [(ngModel)]="u.prenom_ar">
-      </div>
+    <h1 class="title">Modifier un employé</h1>
+    <!--<div *ngIf="alert==true"  class="alert alert-success alert-white rounded">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      <div class="icon"><i class="fa fa-check"></i></div>
+      <strong>Success!</strong> l'employé a été ajouté avec succèes
+      </div>-->
 
-      <div class="form-group b">
-        <label for="first-name">اللقب بالعربية</label>
-        <input id="first-name" type="text"  [(ngModel)]="u.nom_ar">
-      </div>
-      <div class="form-group b">
-        <label for="first-name">Matricule</label>
-        <input id="first-name" type="number"  [(ngModel)]="u.matricule">
-      </div>
-      <div class="form-group b">
-        <label for="first-name">Affecté au groupe </label>
-        <input id="first-name" type="text" >
-      </div>
-      <div class="form-group">
-        <label for="zip">Code postal</label>
-        <input id="zip" type="number" [(ngModel)]="u.codeP">
-      </div>
-      <div class="form-group">
-        <label for="age">Age</label>
-        <input id="age" type="number" [(ngModel)]="u.age">
-      </div>
+      <form  [formGroup]= "form"  (ngSubmit)="editEmp()">
 
-      <div class="form-group email-group">
-        <label for="email">Email</label>
-        <input id="email" type="email" [(ngModel)]="u.email">
-      </div>
+        <div class="grid">
+          <div class="form-group a">
+            <label for="name">Nom</label>
+            <input id="name" type="text" name="nom" formControlName="nom">
+          </div>
 
-      <div class="form-group phone-group">
-        <label for="phone">Téléphone (mobile)</label>
-        <input id="phone" type="tel" v
-        [(ngModel)]="u.numTele">
-      </div>
+          <div class="form-group b">
+            <label for="first-name">Prénom</label>
+            <input id="first-name" type="text" name="prenom" formControlName="prenom" >
+          </div>
+          <div class="form-group a">
+            <label for="name">الاسم بالعربية</label>
+            <input id="name" type="text" name="prenom_ar" formControlName="prenom_ar">
+          </div>
 
+          <div class="form-group b">
+            <label for="first-name">اللقب بالعربية</label>
+            <input id="first-name" type="text" name="nom_ar" formControlName="nom_ar">
+          </div>
+          <div class="form-group b">
+            <label for="first-name">Matricule</label>
+            <input id="first-name" type="text" name="matricule" formControlName="matricule">
+          </div>
+        <div class="form-group b">
+            <label for="first-name">Affecté au groupe </label>
 
+  <select  formControlName="group" >
+    <option  selected >Choose here</option>
+    <option *ngFor="let gr of Gr" [value]="gr|json">{{gr.nomGroup}}</option>
 
-      <div class="form-group">
-        <label for="address">Adresse</label>
-        <input id="address" type="text" [(ngModel)]="u.adresse">
-      </div>
+    </select>
 
-      <div class="form-group">
-        <label for="city">Ville</label>
-        <input id="city" type="text" [(ngModel)]="u.ville" >
-      </div>
-      <div class="textarea-group">
-        <label for="bio">Description</label>
-        <textarea id="bio" [(ngModel)]="u.description" ></textarea>
-      </div>
+          </div>
+          <div class="form-group">
+            <label for="zip">Code postal</label>
+      <input id="zip" type="text" name="codeP" formControlName="codeP">
+          </div>
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input id="age" type="number" name="age" formControlName="age">
+          </div>
+
+          <div class="form-group email-group">
+            <label for="email">Email</label>
+            <input id="email" type="text" name="email" formControlName="email">
+          </div>
+
+          <div class="form-group phone-group">
+            <label for="phone">Téléphone (mobile)</label>
+            <input id="phone" type="text" name="numTele" formControlName="numTele">
+          </div>
 
 
-    </div>
+
+          <div class="form-group">
+            <label for="address">Adresse</label>
+            <input id="address" type="text" name="adresse" formControlName="adresse">
+          </div>
+
+          <div class="form-group">
+            <label for="city">Ville</label>
+            <input id="city" type="text" name="ville" formControlName="ville">
+          </div>
+          <div class="textarea-group">
+            <label for="bio">Description</label>
+            <textarea id="bio" name="description" formControlName="description" ></textarea>
+          </div>
 
 
-    <div class="button-container">
-      <button class="button" (click)="Modifier(u)">Enregister les modifications</button>
-    </div>
-  </form>
+        </div>
+
+
+        <div class="button-container">
+          <button class="button" type="submit"  id="ok">Ajouter</button>
+        </div>
+      </form>
   </div>
+  </body>
 
 
-</body>
+

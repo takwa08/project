@@ -2,11 +2,11 @@
 
 <body>
 <h4>Ajouter un groupe</h4>
-  <form  #addGrp="ngForm" (ngSubmit)="addG(addGrp)">
+   <form  [formGroup]= "form"  (ngSubmit)="addG()">
       <div>
         <div class="form-group">
 
-          <input id="name" type="text" name="nomGroup" ngModel>
+          <input id="name" type="text"  formControlName="nomGroup" >
           <button type="submit" class="button">Ajouter</button>
         </div>
         </div>

@@ -10,90 +10,82 @@
       <strong>Success!</strong> l'employé a été ajouté avec succèes
       </div>
 
-<form #addF="ngForm" (ngSubmit)="Ajouter(addF) ">
+      <form  [formGroup]= "form"  (ngSubmit)="Ajouter()">
 
-    <div class="grid">
-      <div class="form-group a">
-        <label for="name">Nom</label>
-        <input id="name" type="text" name="nom" ngModel>
-      </div>
-<!-- nom:string;
-  prenom: string;
-  nom_ar:string;
-   prenom_ar:string;
-  matricule:number;
-  age:number;
-  description:string;-->
-      <div class="form-group b">
-        <label for="first-name">Prénom</label>
-        <input id="first-name" type="text" name="prenom" ngModel >
-      </div>
-      <div class="form-group a">
-        <label for="name">الاسم بالعربية</label>
-        <input id="name" type="text" name="prenom_ar" ngModel>
-      </div>
+        <div class="grid">
+          <div class="form-group a">
+            <label for="name">Nom</label>
+            <input id="name" type="text" name="nom" formControlName="nom">
+          </div>
 
-      <div class="form-group b">
-        <label for="first-name">اللقب بالعربية</label>
-        <input id="first-name" type="text" name="prenom_ar" ngModel>
-      </div>
-      <div class="form-group b">
-        <label for="first-name">Matricule</label>
-        <input id="first-name" type="text" name="matricule" ngModel>
-      </div>
-    <div class="form-group b">
-        <label for="first-name">Affecté au groupe </label>
+          <div class="form-group b">
+            <label for="first-name">Prénom</label>
+            <input id="first-name" type="text" name="prenom" formControlName="prenom" >
+          </div>
+          <div class="form-group a">
+            <label for="name">الاسم بالعربية</label>
+            <input id="name" type="text" name="prenom_ar" formControlName="prenom_ar">
+          </div>
 
-<select ngModel name="group" id="first-name">
+          <div class="form-group b">
+            <label for="first-name">اللقب بالعربية</label>
+            <input id="first-name" type="text" name="nom_ar" formControlName="nom_ar">
+          </div>
+          <div class="form-group b">
+            <label for="first-name">Matricule</label>
+            <input id="first-name" type="text" name="matricule" formControlName="matricule">
+          </div>
+        <div class="form-group b">
+            <label for="first-name">Affecté au groupe </label>
 
-    <option *ngFor="let gr of g" [value]="gr.idGrp">{{gr.nomGroup}}</option>
+  <select  formControlName="group" >
+        <option *ngFor="let gr of Gr " [value]="gr|json" >{{gr.nomGroup}}</option>
+    </select>
 
-</select>
+          </div>
+          <div class="form-group">
+            <label for="zip">Code postal</label>
+      <input id="zip" type="text" name="codeP" formControlName="codeP">
+          </div>
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input id="age" type="number" name="age" formControlName="age">
+          </div>
 
-      </div>
-      <div class="form-group">
-        <label for="zip">Code postal</label>
-  <input id="zip" type="text" name="codeP" ngModel>
-      </div>
-      <div class="form-group">
-        <label for="age">Age</label>
-        <input id="age" type="number" name="age" ngModel>
-      </div>
+          <div class="form-group email-group">
+            <label for="email">Email</label>
+            <input id="email" type="text" name="email" formControlName="email">
+          </div>
 
-      <div class="form-group email-group">
-        <label for="email">Email</label>
-        <input id="email" type="text" name="email" ngModel>
-      </div>
-
-      <div class="form-group phone-group">
-        <label for="phone">Téléphone (mobile)</label>
-        <input id="phone" type="text" name="numTele" ngModel>
-      </div>
+          <div class="form-group phone-group">
+            <label for="phone">Téléphone (mobile)</label>
+            <input id="phone" type="text" name="numTele" formControlName="numTele">
+          </div>
 
 
 
-      <div class="form-group">
-        <label for="address">Adresse</label>
-        <input id="address" type="text" name="adresse" ngModel>
-      </div>
+          <div class="form-group">
+            <label for="address">Adresse</label>
+            <input id="address" type="text" name="adresse" formControlName="adresse">
+          </div>
 
-      <div class="form-group">
-        <label for="city">Ville</label>
-        <input id="city" type="text" name="ville" ngModel>
-      </div>
-      <div class="textarea-group">
-        <label for="bio">Description</label>
-        <textarea id="bio" name="description" ngModel ></textarea>
-      </div>
-
-
-    </div>
+          <div class="form-group">
+            <label for="city">Ville</label>
+            <input id="city" type="text" name="ville" formControlName="ville">
+          </div>
+          <div class="textarea-group">
+            <label for="bio">Description</label>
+            <textarea id="bio" name="description" formControlName="description" ></textarea>
+          </div>
 
 
-    <div class="button-container">
-      <button class="button" type="submit"  id="ok">Ajouter</button>
-    </div>
-  </form>
+        </div>
+
+
+        <div class="button-container">
+          <button class="button" type="submit"  id="ok">Ajouter</button>
+        </div>
+      </form>
   </div>
   </body>
 

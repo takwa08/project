@@ -12,11 +12,11 @@ import { LoginService } from '../login.service';
 })
 export class LoginComponent implements OnInit {
   msg:string="";
- admin = new Admin();
+ admin = new Admin(0,"","");
   form: FormGroup;
  sessionValue : string="";
 localValue : string="";
-constructor( private _route : Router,private fb:FormBuilder) {
+constructor( private _route : Router,private fb:FormBuilder,private logServ:LoginService) {
 
 
     this.form=this.fb.group
@@ -38,8 +38,18 @@ constructor( private _route : Router,private fb:FormBuilder) {
    // sessionStorage.setItem("Session ","Session- LDAP");
 
   }
+
+  getEmail()
+  {
+    return this.form.get('Email')?.value
+  }
+  getPassword()
+  {
+    return this.form.get('password')?.value
+  }
 loginAdmin()
 {
+
 console.log(this.form)
 this._route.navigateByUrl('/EspaceAdministratif')
 

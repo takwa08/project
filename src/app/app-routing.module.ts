@@ -22,8 +22,7 @@ const routes: Routes = [
   {path:'edit/:id',component:EditComponent},
   {path:'addEmp',component:AddComponent},
   {path:'addGrp',component:AddGrpComponent},
-  {path:'editGrp',component:EditGrpComponent}
-
+  {path:'editGrp/:id',component:EditGrpComponent}
 ];
 
 @NgModule({

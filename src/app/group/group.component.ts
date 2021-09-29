@@ -12,7 +12,7 @@ import { GroupService } from '../group.service';
 })
 export class GroupComponent implements OnInit {
 Gr:Group[];
-
+g1:Group
   constructor(private grpService:GroupService) {
 
   }
@@ -39,28 +39,28 @@ Gr:Group[];
 
 }
   ngOnInit(): void {
-this.getGrp()
+      this.getGrp()
   }
 
   public deleteGrp(nom:String)
   {
     this.grpService.deleteGroupe(nom).subscribe(
-
-
-   () =>
-
-   {
-this.getGrp()
-   },
+   () =>   {this.getGrp()   },
 
    (error:HttpErrorResponse)=>{
      alert(error.message);
      console.log(error)
    }
-   );
+   );}
 
 
-  }
-
-
-}
+   public routeId(n:number)
+   {
+     this.grpService.findByIdGrp(n).subscribe(
+       (res:Group)=>{
+        this.g1=res; },
+        (error:HttpErrorResponse)=>{
+          alert(error.message);
+          console.log(error)
+        }
+        );}}

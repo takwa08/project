@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Group } from './group';
@@ -8,6 +8,7 @@ import { Utilisateur } from './Utilisateur';
   providedIn: 'root'
 })
 export class PersonService {
+
 
   constructor(private http :HttpClient) { }
 public getAllEmp():Observable <Utilisateur[]>
@@ -22,7 +23,18 @@ return this.http.put <Utilisateur>('http://localhost:8084/edit',utilisateur);
 
 public addEmp(utilisateur:Utilisateur):Observable <Utilisateur>
 {
-  return this.http.post<Utilisateur>('http://localhost:8084/addEmp',utilisateur);
+  const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
+
+var U=JSON.stringify(utilisateur)
+let s = U.replace(/\\n/g,'');
+//console.log(s)
+let b = s.replace(/([.*+?^=!$()|\[\]\/\\])/g,'');
+console.log(b)
+JSON.parse(b)
+console.log(b)
+
+
+  return this.http.post<Utilisateur>('http://localhost:8084/addEmp',b,httpOptions);
 }
 public findEmpBy (id: number)
 {
@@ -40,3 +52,5 @@ return this.http.delete<Utilisateur>(`http://localhost:8084/deleteEmp/${matricul
 }
 
 }
+
+
