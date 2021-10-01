@@ -7,22 +7,23 @@ import { EditGrpComponent } from './edit-grp/edit-grp.component';
 import { EditComponent } from './edit/edit.component';
 import { GroupComponent } from './group/group.component';
 import { HomeComponent } from './home/home.component';
-
+import { LogAuthGuard } from './log-auth.guard';
 import { LoginComponent } from './login/login.component';
 import { PersonComponent } from './person/person.component';
+import { StatusOnGuard } from './status-on.guard';
 import { StructureComponent } from './structure/structure.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
-  {path:'login',component:LoginComponent},
-  {path:'EspaceAdministratif',component:AccueilAdministratifComponent},
-  {path:'person',component:PersonComponent},
-  {path:'structure',component:StructureComponent},
-  {path:'group',component:GroupComponent},
-  {path:'edit/:id',component:EditComponent},
-  {path:'addEmp',component:AddComponent},
-  {path:'addGrp',component:AddGrpComponent},
-  {path:'editGrp/:id',component:EditGrpComponent}
+  {path:'login',component:LoginComponent,},
+  {path:'EspaceAdministratif',component:AccueilAdministratifComponent,canActivate:[LogAuthGuard]},
+  {path:'person',component:PersonComponent,canActivate:[LogAuthGuard]},
+  {path:'structure',component:StructureComponent,canActivate:[LogAuthGuard]},
+  {path:'group',component:GroupComponent,canActivate:[LogAuthGuard]},
+  {path:'edit/:id',component:EditComponent,canActivate:[LogAuthGuard]},
+  {path:'addEmp',component:AddComponent,canActivate:[LogAuthGuard]},
+  {path:'addGrp',component:AddGrpComponent,canActivate:[LogAuthGuard]},
+  {path:'editGrp/:id',component:EditGrpComponent,canActivate:[LogAuthGuard]}
 ];
 
 @NgModule({

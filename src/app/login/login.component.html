@@ -45,7 +45,7 @@
             entrez l'email de la societé
           </div>
 
-        <div class="form-text text-muted"
+        <div class="form-text text-muted" (event) = "onEvent()"
         *ngIf="form.controls.Email.touched && form.controls.Email.errors?.email">
           Email address not well formed.!
       </div>
@@ -58,7 +58,7 @@
             le mot de passe doit entre 8-12 caractére
           </div>
           </div>
-          <button type="submit" class="login-btn">دخول</button>
+          <button type="submit" class="login-btn" [disabled]="!(form.valid && form.dirty)">دخول</button>
         </form>
       <!--Content ends-->
     </div></div>

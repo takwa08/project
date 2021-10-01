@@ -33,14 +33,13 @@
           </div>
           <div class="form-group b">
             <label for="first-name">Matricule</label>
-            <input id="first-name" type="text" name="matricule" formControlName="matricule">
+            <input  readonly="readonly" id="matricule" type="text" name="matricule" formControlName="matricule">
           </div>
         <div class="form-group b">
             <label for="first-name">Affecté au groupe </label>
 
-  <select  formControlName="group" >
-    <option  selected >Choose here</option>
-    <option *ngFor="let gr of Gr" [value]="gr|json">{{gr.nomGroup}}</option>
+  <select  formControlName="group">
+    <option selected *ngFor="let gr of Gr" [value]="gr|json">{{gr.nomGroup}}</option>
 
     </select>
 

@@ -5,18 +5,21 @@ import {NgForm} from '@angular/forms';
 import { Admin } from '../admin';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
   msg:string="";
  admin = new Admin(0,"","");
   form: FormGroup;
- sessionValue : string="";
-localValue : string="";
-constructor( private _route : Router,private fb:FormBuilder,private logServ:LoginService) {
+
+constructor( private _route : Router,private fb:FormBuilder,private logServ:LoginService,private toast:ToastrService) {
 
 
     this.form=this.fb.group
@@ -35,8 +38,9 @@ constructor( private _route : Router,private fb:FormBuilder,private logServ:Logi
   }
   ngOnInit() {
 
-   // sessionStorage.setItem("Session ","Session- LDAP");
-
+  }
+  onEvent(){
+    this.toast.warning("nope")
   }
 
   getEmail()
@@ -49,9 +53,38 @@ constructor( private _route : Router,private fb:FormBuilder,private logServ:Logi
   }
 loginAdmin()
 {
+  this.admin.id=0;
+  this.admin.username=this.getEmail();
+  this.admin.password=this.getPassword();
 
-console.log(this.form)
-this._route.navigateByUrl('/EspaceAdministratif')
+this.logServ.logAdmin(this.admin).subscribe(
+()=>
+  {
+   //console.log(data)
+      localStorage.setItem("isConnected",this.admin.username);
+
+      this._route.navigateByUrl('/EspaceAdministratif')
+      this.toast.success("Connexion réussie")
+if( this._route.url==="/login")
+{
+  this._route.navigateByUrl('/EspaceAdministratif')
+}
+
+  },
+  (error:HttpErrorResponse)=>
+  {
+
+    if(error.status==404)
+    {
+      this.toast.warning("Adresse ou mot de passe incorrecte ! ")
+    }
+  }
+
+ );
+
+
 
 }
 }
+
+

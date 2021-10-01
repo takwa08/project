@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs';
 import { Group } from '../group';
 import { GroupService } from '../group.service';
 import{NgModel}from'@angular/forms'
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-grp',
@@ -16,7 +18,7 @@ export class AddGrpComponent implements OnInit {
  form: FormGroup;
   res:boolean=false
 
-  constructor(private ServGrp:GroupService,private forb:FormBuilder) {
+  constructor(private ServGrp:GroupService,private forb:FormBuilder,private toastr:ToastrService,private route:Router) {
     this.form=this.forb.group
     ({
         nomGroup: ['',[Validators.required]
@@ -42,9 +44,20 @@ this.g.nomGroup=this.get()?.value
 
   this.ServGrp.addG(this.g).subscribe(
   (response:Group)=>{
-    this.res=true;
+    if(response==null)
+    {
+     // alert("groupe existant")
+     this.toastr.warning("Ce groupe existe déjà ")
+    }
+    else{
+
+
     console.log(response);
     console.log(this.g)
+this.toastr.success(`Groupe ${this.g.nomGroup} a été ajouté avec succèes` )
+
+this.route.navigateByUrl('/group');
+    }
   },
  (error:HttpErrorResponse)=>
  {alert(error.message);

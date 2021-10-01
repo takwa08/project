@@ -9,11 +9,13 @@ export class LoginService {
 
   constructor(private _http:HttpClient)
   { }
-  public logAdmin(admin:Admin):Observable<Admin>
+
+  public logAdmin(admin:Admin):Observable<any>
   {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
 
     var a=JSON.stringify(admin)
-    return this._http.post<Admin>("http://localhost:8084/login",a,httpOptions);
+    console.log(a)
+    return this._http.post<any>("http://localhost:8084/login",a,httpOptions);
   }
 }

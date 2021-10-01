@@ -1,9 +1,9 @@
 export class Admin
 {
   id:number
-  email: string;
+  username: string;
   password:string;
-  constructor( id:number
+  constructor( id:number,
     email: string,
     password:string)
   {}

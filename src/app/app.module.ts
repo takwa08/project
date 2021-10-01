@@ -10,7 +10,7 @@ import { PersonComponent } from './person/person.component';
 import { GroupComponent } from './group/group.component';
 import { StructureComponent } from './structure/structure.component';
 import { FooterComponent } from './footer/footer.component';
-import {NgForm} from '@angular/forms';
+
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { EditComponent } from './edit/edit.component';
@@ -20,6 +20,9 @@ import { Nav1Component } from './nav1/nav1.component';
 import { AddGrpComponent } from './add-grp/add-grp.component';
 import { EditGrpComponent } from './edit-grp/edit-grp.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import{BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     AddComponent,
     Nav1Component,
     AddGrpComponent,
-    EditGrpComponent
+    EditGrpComponent,
+
   ],
   imports: [
 FormsModule,
@@ -43,7 +47,11 @@ ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+  
+
 
 
   ],

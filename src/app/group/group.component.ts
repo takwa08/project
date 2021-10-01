@@ -1,6 +1,7 @@
 
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Group } from '../group';
 import { GroupService } from '../group.service';
 
@@ -13,7 +14,7 @@ import { GroupService } from '../group.service';
 export class GroupComponent implements OnInit {
 Gr:Group[];
 g1:Group
-  constructor(private grpService:GroupService) {
+  constructor(private grpService:GroupService,private toastr:ToastrService) {
 
   }
 
@@ -45,11 +46,19 @@ g1:Group
   public deleteGrp(nom:String)
   {
     this.grpService.deleteGroupe(nom).subscribe(
-   () =>   {this.getGrp()   },
+   () =>   {
+     this.getGrp()
+     this.toastr.success(`Le groupe ${nom} a étè supprimer avec succées`) },
 
    (error:HttpErrorResponse)=>{
-     alert(error.message);
+
+   //  alert(error.message);
      console.log(error)
+     if(error.status==500)
+     {
+      this.toastr.error(`Echec de suppression du groupe ${nom} !
+      des employé sont affectés a ce groupe `)
+     }
    }
    );}
 

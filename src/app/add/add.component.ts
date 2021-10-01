@@ -1,6 +1,8 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Group } from '../group';
 import { GroupService } from '../group.service';
 import { PersonService } from '../person.service';
@@ -23,7 +25,7 @@ user:Utilisateur=new Utilisateur(0,"","","","",0,"","","","","","",this.gr)
 selectedOption:string=""
 retour:string=""
 alert:boolean=false
-constructor(private personServ:PersonService,private grpService:GroupService,private fb:FormBuilder) {
+constructor(private personServ:PersonService,private grpService:GroupService,private fb:FormBuilder,private route:Router,private toastr:ToastrService) {
   this.form=this.fb.group(
     {
     nom:['',
@@ -119,14 +121,9 @@ this.personServ.addEmp(this.user).subscribe
   (response:any)=>{
     console.log(response);
     console.log(this.user)
-  //  this.formvalue=this.selectedOption
-    //response.group=new Group()
-    //response.group=eval(this.formvalue) as Group
+    this.toastr.info("l'employé a été ajouté avec succèes")
+    this.route.navigateByUrl('/person');
 
-   // response.group.idGrp=(eval(this.formvalue)as Group).idGrp
-    //response.group.nomGroup=(eval(this.formvalue)as Group).nomGroup
-
-this.alert=true
 
   },
  (error:HttpErrorResponse)=>

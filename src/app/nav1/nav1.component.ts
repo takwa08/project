@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav1',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Nav1Component implements OnInit {
 
-  constructor() { }
+  constructor(private route:Router) { }
 
   ngOnInit(): void {
+  }
+  Decon ()
+  {
+
+    //localStorage.removeItem('AdminEspace');
+    localStorage.removeItem('isConnected');
+  //  sessionStorage.removeItem('Logname')
+      this.route.navigateByUrl('/');
+
+
   }
 
 }

@@ -1,10 +1,9 @@
 footer {
-  flex-shrink: 0;
+
   border-top: 1px dashed #000;
   width: 100%;
-  background: #f1f1f1;
-  color: #333;
-  
+
+
 }
 .contenu-footer {
   width: 1200px;
@@ -12,4 +11,36 @@ footer {
 
   font-size: 30px;
   padding: 50px 0 100px;
+}
+
+
+.footer{
+  border-top: 1px dashed #000;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f1f1f1;
+  color: #333;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+
+
+.company-name{
+  font-size: 1em;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 500px){
+  html{
+      font-size: 50%;
+  }
+}
+
+@media(min-width: 501px) and (max-width: 768px){
+  html{
+  font-size: 50%;
+  }
 }

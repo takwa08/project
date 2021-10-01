@@ -3,9 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { PersonService } from '../person.service';
 import { Utilisateur } from '../Utilisateur';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Group } from '../group';
 import { GroupService } from '../group.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -19,7 +20,7 @@ user:Utilisateur=new Utilisateur(0,"","","","",0,"","","","","","",this.gr)
  // u= new Utilisateur();
 
 
-  constructor(private personSer:PersonService,private router:ActivatedRoute,private fb:FormBuilder,private grpService:GroupService) {
+  constructor(private personSer:PersonService,private router:ActivatedRoute,private fb:FormBuilder,private grpService:GroupService,private toastr:ToastrService,private route:Router) {
     this.form=this.fb.group(
       {
       nom:['',
@@ -122,7 +123,7 @@ user:Utilisateur=new Utilisateur(0,"","","","",0,"","","","","","",this.gr)
      (error:HttpErrorResponse)=>{
        alert(error.message);
      });
-
+     //document.getElementById('matricule')?.ariaDisabled
   }
 
 public getGrp():void
@@ -166,7 +167,8 @@ this.user.group=this.getGr()?.value
 
     this.personSer.updateEmp(this.user).subscribe
     ((response:Utilisateur)=>{
-
+    this.toastr.success(`${this.user.nom} ${this.user.prenom} L'employé a étè modifier avec succées `)
+    this.route.navigateByUrl('/person')
       console.log('done bb')
       console.log(response)
 

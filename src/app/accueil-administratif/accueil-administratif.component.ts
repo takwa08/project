@@ -10,6 +10,7 @@ export class AccueilAdministratifComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

@@ -1,5 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 import { PersonService } from '../person.service';
 import { Utilisateur } from '../Utilisateur';
@@ -12,7 +14,7 @@ import { Utilisateur } from '../Utilisateur';
 export class PersonComponent implements OnInit {
    employees:Utilisateur[];
 public employee:Utilisateur
-  constructor(private PersonService:PersonService) { }
+  constructor(private PersonService:PersonService,private _route:Router,private toastr:ToastrService) { }
 
 public getEmployee():void
 {
@@ -49,11 +51,24 @@ this.PersonService.getAllEmp().subscribe(
     this.PersonService.DeleteEmp(id).subscribe
     (
       ()=>
-      {this.getEmployee()
+      { //const emp=this.PersonService.findEmpBy(id)
+        this.getEmployee()
+        this.toastr.success(`L'employé a étè supprimer avec succées `)
+        this._route.navigateByUrl('/person')
+
       },
       (error:HttpErrorResponse)=>{
         alert(error.message);
       });
   }
+  Decon ()
+  {
 
+    localStorage.removeItem('AdminEspace');
+    localStorage.removeItem('isConnected');
+    sessionStorage.removeItem('Logname')
+      this._route.navigateByUrl('/');
+
+
+  }
 }
