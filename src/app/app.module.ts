@@ -22,6 +22,7 @@ import { EditGrpComponent } from './edit-grp/edit-grp.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import{BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AddStructComponent } from './add-struct/add-struct.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import{BrowserAnimationsModule} from '@angular/platform-browser/animations';
     Nav1Component,
     AddGrpComponent,
     EditGrpComponent,
+    AddStructComponent,
 
   ],
   imports: [

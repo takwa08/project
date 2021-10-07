@@ -4,7 +4,8 @@ body {
 	background: #f2f2f2;
 	font-family: "Roboto", sans-serif;
 	display: flex;
-
+	height: 100px;
+	width: 98.5%;
 	justify-content: center;
   min-height: 84vh
 }
@@ -27,23 +28,14 @@ input{
 	padding: 1rem;
 }
 
+
+
 .title {
 
 	color: #374151;
 
 	border-bottom: 1px solid #d7dbdf;
 }
-
-
-
-
-
-
-
-
-
-
-
 .button {
 	font-weight: bold;
 

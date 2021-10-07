@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Group } from './group';
+import { Ministere } from './ministere';
+import { Societe } from './societe';
 import { Utilisateur } from './Utilisateur';
 
 @Injectable({
@@ -23,14 +25,11 @@ public updateEmp(utilisateur :Utilisateur):Observable <Utilisateur>
 
 var U=JSON.stringify(utilisateur.group)
 let s = U.replace(/\\n/g,'');
-//console.log(s)
 let b = s.replace(/([.*+?^=!$()|\[\]\/\\])/g,'');
 console.log(b)
-//JSON.parse(b)
 console.log(b)
 let c=b.split("");
 c.splice(0,1)
-//myArr.splice('"',);
 c.reverse()
 c.splice(0,1)
 c.reverse()
@@ -39,7 +38,7 @@ console.log(a)
 let p=JSON.parse(a) as Group
 console.log(p)
 //let user=new Utilisateur(utilisateur.matricule,utilisateur.nom,utilisateur.prenom,utilisateur.nom_ar,"",0,"","","","","","",p)
-let u1=new Utilisateur(0,"","","","",0,"","","","","","",new Group(0,""))
+let u1=new Utilisateur(0,"","","","",0,"","","","","","",new Group(0,""),new Societe(0,"","",0,"",new Ministere(0,"","","",0,"")))
 
 
 u1.matricule=utilisateur.matricule;
@@ -83,7 +82,7 @@ console.log(a)
 let p=JSON.parse(a) as Group
 console.log(p)
 //let user=new Utilisateur(utilisateur.matricule,utilisateur.nom,utilisateur.prenom,utilisateur.nom_ar,"",0,"","","","","","",p)
-let u1=new Utilisateur(0,"","","","",0,"","","","","","",new Group(0,""))
+let u1=new Utilisateur(0,"","","","",0,"","","","","","",new Group(0,""),new Societe(0,"","",0,"",new Ministere(0,"","","",0,"")))
 
 
 u1.matricule=utilisateur.matricule;
@@ -117,7 +116,10 @@ public DeleteEmp(matricule:number):Observable <Utilisateur>
 {
 return this.http.delete<Utilisateur>(`http://localhost:8084/deleteEmp/${matricule}`);
 }
-
+public findEmpSoc(id:String):Observable<Utilisateur[]>
+{
+  return this.http.get<Utilisateur[]>(`http://localhost:8084/findEmpSoc/${id}`);
+}
 }
 
 

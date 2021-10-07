@@ -13,15 +13,13 @@ nav:string[]
   constructor(private route :Router ,private toast:ToastrService) {}
 
   ngOnInit(): void {
-  }
+  }/*
   back()
   {
     this.route.url==="edit"
-  }
+  }*/
   Decon ()
   {
-
-
   //  localStorage.removeItem('AdminEspace');
     localStorage.removeItem('isConnected');
       this.route.navigateByUrl('/');

@@ -1,0 +1,63 @@
+
+
+  <app-navbar></app-navbar>
+  <body>
+<div class="container">
+
+  <h1 class="title">Ajouter une Structure</h1>
+
+    <form FormGroup="form" (ngSubmit)="addSociet()">
+
+      <div class="grid">
+        <div class="form-group a">
+          <label for="name">Code Structure</label>
+          <input id="name" type="number" name="code" formControlName="code">
+        </div>
+        <div class="form-group a">
+          <label for="name">Nom</label>
+          <input id="name" type="text" name="nom" formControlName="nomStructure">
+        </div>
+
+        <div class="form-group a">
+          <label for="name">الاسم بالعربية</label>
+          <input id="name" type="text" name="nom_ar" formControlName="nomStructure_ar">
+        </div>
+
+        <div class="form-group email-group">
+          <label for="email">Email</label>
+          <input id="email" type="text" name="email" formControlName="emailStr">
+        </div>
+
+        <div class="form-group phone-group">
+          <label for="phone">Téléphone (mobile)</label>
+          <input id="phone" type="text" name="numTele" formControlName="numTele">
+        </div>
+        <div class="form-group">
+          <label for="address">Adresse web</label>
+          <input id="address" type="text" name="adresse" formControlName="adresseWeb">
+        </div>
+
+
+      <div class="form-group b">
+          <label for="first-name">Sructure parente </label>
+
+<select  formControlName="StructureParente" >
+      <option *ngFor="let item of ministeres" value={{item}}>{{item.nomMinistere}}</option>
+  </select>
+  <a routerLink="/addStruct">manque une structure ? ajoutez un nouveau</a>
+
+        </div>
+
+
+
+      </div>
+
+
+      <div class="button-container">
+       <button class="button" type="submit"  id="ok">Ajouter</button>
+      </div>
+    </form>
+</div>
+</body>
+
+

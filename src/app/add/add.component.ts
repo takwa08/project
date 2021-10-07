@@ -1,3 +1,4 @@
+
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -5,7 +6,11 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Group } from '../group';
 import { GroupService } from '../group.service';
+import { Ministere } from '../ministere';
+import { MinistereService } from '../ministere.service';
 import { PersonService } from '../person.service';
+import { Societe } from '../societe';
+import { SocieteService } from '../societe.service';
 import { Utilisateur } from '../Utilisateur';
 
 @Component({
@@ -18,14 +23,19 @@ export class AddComponent implements OnInit {
 form:FormGroup
   formvalue:string=""
  gr:Group=new Group(0,"");
-user:Utilisateur=new Utilisateur(0,"","","","",0,"","","","","","",this.gr)
+user:Utilisateur=new Utilisateur(0,"","","","",0,"","","","","","",new Group(0,""),new Societe(0,"","",0,"",new Ministere(0,"","","",0,"")))
 
-  Gr: Group[] = [];
-
+Gr: Group[] = [];
 selectedOption:string=""
 retour:string=""
 alert:boolean=false
-constructor(private personServ:PersonService,private grpService:GroupService,private fb:FormBuilder,private route:Router,private toastr:ToastrService) {
+m:Ministere=new Ministere(0,"","","",0,"")
+ministeres:Ministere[]=[]
+selected :string=""
+selected_:string=""
+Societe:Societe[]=[]
+Employes:Utilisateur[]=[]
+constructor(private personServ:PersonService,private grpService:GroupService,private fb:FormBuilder,private route:Router,private toastr:ToastrService,private servMin:MinistereService,private servSociete:SocieteService,private servEmp:PersonService) {
   this.form=this.fb.group(
     {
     nom:['',
@@ -184,4 +194,66 @@ getGr()
 {
   return  this.form.get('group')
 }
+
+public getMin()
+{
+  this.servMin.getMinistere().subscribe(
+    (res:Ministere[])=>
+    {
+      this.ministeres=res
+  console.log( this.ministeres)
+    },
+    (error:HttpErrorResponse)=>{
+      alert(error.message)
+    }
+  )
 }
+getMinistere()
+{
+  return this.form.get('ministere')
+}
+onEvent(event:any)
+{
+
+this.selected= event.target.value
+console.log(this.selected)
+let idMinist_=JSON.parse(this.selected) as Ministere
+this.m.Ministere_id=idMinist_.Ministere_id
+this.m.nomMinistere=idMinist_.nomMinistere
+console.log(this.m)
+this.servSociete.findByIdMin(this.m.nomMinistere).subscribe(
+(res:Societe[])=>
+{
+this.Societe=res;
+//console.log(this.Societe)
+}
+),(error:HttpErrorResponse)=>{
+alert(error.message)
+}
+
+}
+
+Event(event:any){
+this.selected_= event.target.value
+console.log(this.selected_)
+// var e=JSON.stringify(this.selected_)
+//var idSo_=JSON.parse(e) as Societe
+// let s=new Societe(idSo_.societe_id,idSo_.nomSociete,new Ministere(idSo_.ministere.Ministere_id,idSo_.ministere.nomMinistere))
+// this.s.societe_id=idSo_.societe_id
+//this.s.nomSociete=idSo_.nomSociete
+// console.log(s)
+let string =JSON.parse(this.selected_)as String
+console.log(string)
+this.servEmp.findEmpSoc(string).subscribe(
+  (res:Utilisateur[])=>
+  {console.log(this.selected_)
+    this.Employes=res
+    console.log(this.Employes)
+  },(error:HttpErrorResponse)=>{
+  alert(error.message)
+  }
+)
+
+}
+}
+

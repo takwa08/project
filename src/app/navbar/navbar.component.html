@@ -11,12 +11,19 @@
       </div>
 
       <div  class="navbar-links">
-        <a >Précedent</a>
-
-        <a [routerLink]="['/addEmp']" >Ajouter employé</a>
         <a (click)="Decon()"  data-position="bottom">Déconnexion</a>
         </div>
+        <div  class="navbar-links">
+          <a routerLink="/person"  data-position="bottom">Gestion Employé</a>
+          </div>
+          <div  class="navbar-links">
+            <a routerLink="/group" data-position="bottom">Gestion Groupe</a>
+            </div>
+            <div  class="navbar-links">
+              <a routerLink="/structure" data-position="bottom">Gestion Structure</a>
+              </div>
+
     </div>
- 
+
   </div>
 

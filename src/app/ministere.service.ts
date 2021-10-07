@@ -6,13 +6,11 @@ import { Ministere } from './ministere';
 @Injectable({
   providedIn: 'root'
 })
-export class StructureService {
+export class MinistereService {
 
   constructor(private http:HttpClient) { }
-public getAllStructure():Observable<Ministere>
-{
-  return this.http.get<Ministere>("http://localhost:4200/Structure");
-}
-
-
+  public getMinistere():Observable<Ministere[]>
+  {
+    return this.http.get<Ministere[]>("http://localhost:8084/Structure")
+  }
 }

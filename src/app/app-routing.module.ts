@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccueilAdministratifComponent } from './accueil-administratif/accueil-administratif.component';
 import { AddGrpComponent } from './add-grp/add-grp.component';
+import { AddStructComponent } from './add-struct/add-struct.component';
 import { AddComponent } from './add/add.component';
 import { EditGrpComponent } from './edit-grp/edit-grp.component';
 import { EditComponent } from './edit/edit.component';
@@ -18,12 +19,14 @@ const routes: Routes = [
   {path:'login',component:LoginComponent,},
   {path:'EspaceAdministratif',component:AccueilAdministratifComponent,canActivate:[LogAuthGuard]},
   {path:'person',component:PersonComponent,canActivate:[LogAuthGuard]},
-  {path:'structure',component:StructureComponent,canActivate:[LogAuthGuard]},
-  {path:'group',component:GroupComponent,canActivate:[LogAuthGuard]},
+  {path:'structure',component:StructureComponent},
+  {path:'group',component:GroupComponent},
   {path:'edit/:id',component:EditComponent,canActivate:[LogAuthGuard]},
   {path:'addEmp',component:AddComponent,canActivate:[LogAuthGuard]},
-  {path:'addGrp',component:AddGrpComponent,canActivate:[LogAuthGuard]},
-  {path:'editGrp/:id',component:EditGrpComponent,canActivate:[LogAuthGuard]}
+  {path:'addGrp',component:AddGrpComponent},
+  {path:'editGrp/:id',component:EditGrpComponent,canActivate:[LogAuthGuard]},
+  {path:'addStruct',component:AddStructComponent}
+
 ];
 
 @NgModule({

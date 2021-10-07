@@ -1,65 +1,66 @@
-<body>
-  <div class="container">
 
-    <div class="header">
+  <body>
+    <div class="container">
 
-      <!--Content before waves-->
-      <div class="inner-header flex">
-      <!--Just the logo.. Don't mind this-->
+      <div class="header">
 
-      <figure><img src="assets/cni.png" alt=""></figure><figcaption>المركز الوطني للإعلامية</figcaption>
-      </div>
+        <!--Content before waves-->
+        <div class="inner-header flex">
+        <!--Just the logo.. Don't mind this-->
 
-      <!--Waves Container-->
-      <div>
-      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-      viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-      <defs>
-      <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-      </defs>
-      <g class="parallax">
-      <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-      <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-      <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-      <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
-      </g>
-      </svg>
-      </div>
-      <!--Waves end-->
+        <figure><img src="assets/cni.png" alt=""></figure><figcaption>المركز الوطني للإعلامية</figcaption>
+        </div>
 
-      </div>
-      <!--Header ends    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adminname'"
-       onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'"
-      -->
+        <!--Waves Container-->
+        <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+        <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+        </g>
+        </svg>
+        </div>
+        <!--Waves end-->
 
-      <!--Content starts-->
-      <div class="content flex">
+        </div>
+        <!--Header ends    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adminname'"
+         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'"
+        -->
 
-        <form  [formGroup]="form" (ngSubmit)="loginAdmin()" >
-          <div class="form-group">
+        <!--Content starts-->
+        <div class="content flex">
+
+          <form  [formGroup]="form" (ngSubmit)="loginAdmin()" >
+            <div class="form-group">
 
 
-          <input type="email"  formControlName="Email" required  />
-          <div class="form-text text-muted"
-           *ngIf="form.controls.Email.touched && form.controls.Email.errors?.required">
-            entrez l'email de la societé
-          </div>
+            <input type="email"  formControlName="Email" required  />
+            <div id="control"
+             *ngIf="form.controls.Email.touched && form.controls.Email.errors?.required">
+              entrez l'email de la societé
+            </div>
 
-        <div class="form-text text-muted" (event) = "onEvent()"
-        *ngIf="form.controls.Email.touched && form.controls.Email.errors?.email">
-          Email address not well formed.!
-      </div>
+          <div id="control" (event) = "onEvent()"
+          *ngIf="form.controls.Email.touched && form.controls.Email.errors?.email">
+            Email address not well formed.!
+        </div>
 
-         </div>
-         <div class="form-group">
+           </div>
+           <div class="form-group">
 
-          <input type="password"  formControlName="password" required />
-          <div *ngIf="form.controls.password.touched && form.controls.password.invalid">
-            le mot de passe doit entre 8-12 caractére
-          </div>
-          </div>
-          <button type="submit" class="login-btn" [disabled]="!(form.valid && form.dirty)">دخول</button>
-        </form>
-      <!--Content ends-->
-    </div></div>
-    </body>
+            <input type="password"  formControlName="password" required />
+            <div id="control" *ngIf="form.controls.password.touched && form.controls.password.invalid">
+              le mot de passe doit entre 8-12 caractére
+            </div>
+            </div>
+            <button type="submit" class="login-btn" [disabled]="!(form.valid && form.dirty)">دخول</button>
+          </form>
+        <!--Content ends-->
+      </div></div>
+      </body>

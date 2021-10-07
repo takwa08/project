@@ -11722,3 +11722,27 @@ body
 {
   min-height: 84vh;
 }
+.button {
+	font-weight: bold;
+
+	background: #59a4d6;
+	border: none;
+	padding: 15px 15px;
+	border-radius: 6px;
+	color: white;
+	width: 100%;
+	margin-top: 15px;
+}
+.button:hover {
+	background: #6e67ee;
+}
+.button:focus {
+	background: #4239e8;
+}
+
+.button {
+  /* bon, bon, bon
+  c'est pas tout mais j'ai faim moi ^^
+  */
+  width: auto;
+}

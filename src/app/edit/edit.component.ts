@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Group } from '../group';
 import { GroupService } from '../group.service';
 import { ToastrService } from 'ngx-toastr';
+import { Societe } from '../societe';
+import { Ministere } from '../ministere';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -16,8 +18,8 @@ export class EditComponent implements OnInit {
 form:FormGroup
 Gr:Group[]=[]
 gr:Group=new Group(0,"");
-user:Utilisateur=new Utilisateur(0,"","","","",0,"","","","","","",this.gr)
- // u= new Utilisateur();
+user:Utilisateur=new Utilisateur(0,"","","","",0,"","","","","","",new Group(0,""),new Societe(0,"","",0,"",new Ministere(0,"","","",0,"")))
+// u= new Utilisateur();
 
 
   constructor(private personSer:PersonService,private router:ActivatedRoute,private fb:FormBuilder,private grpService:GroupService,private toastr:ToastrService,private route:Router) {
@@ -229,3 +231,4 @@ getGr()
   return  this.form.get('group')
 }
 }
+
