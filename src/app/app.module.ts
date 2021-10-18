@@ -24,6 +24,12 @@ import { ToastrModule } from 'ngx-toastr';
 import{BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AddStructComponent } from './add-struct/add-struct.component';
 
+import { DetailsComponent } from './details/details.component';
+import { DetailStructureComponent } from './detail-structure/detail-structure.component';
+import { EditStructComponent } from './edit-struct/edit-struct.component';
+import { AddEmpToGrpComponent } from './add-emp-to-grp/add-emp-to-grp.component';
+import { DetailGrpComponent } from './detail-grp/detail-grp.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +47,11 @@ import { AddStructComponent } from './add-struct/add-struct.component';
     AddGrpComponent,
     EditGrpComponent,
     AddStructComponent,
+    DetailsComponent,
+    DetailStructureComponent,
+    EditStructComponent,
+    AddEmpToGrpComponent,
+    DetailGrpComponent,
 
   ],
   imports: [
@@ -52,7 +63,7 @@ ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-  
+
 
 
 

@@ -35,24 +35,10 @@
             <label for="first-name">Matricule</label>
             <input  readonly="readonly" id="matricule" type="text" name="matricule" formControlName="matricule">
           </div>
-        <div class="form-group b">
-            <label for="first-name">Affecté au groupe </label>
-
-  <select  formControlName="group">
-    <option selected *ngFor="let gr of Gr" [value]="gr|json">{{gr.nomGroup}}</option>
-
-    </select>
-
-          </div>
           <div class="form-group">
             <label for="zip">Code postal</label>
       <input id="zip" type="text" name="codeP" formControlName="codeP">
           </div>
-          <div class="form-group">
-            <label for="age">Age</label>
-            <input id="age" type="number" name="age" formControlName="age">
-          </div>
-
           <div class="form-group email-group">
             <label for="email">Email</label>
             <input id="email" type="text" name="email" formControlName="email">
@@ -62,9 +48,6 @@
             <label for="phone">Téléphone (mobile)</label>
             <input id="phone" type="text" name="numTele" formControlName="numTele">
           </div>
-
-
-
           <div class="form-group">
             <label for="address">Adresse</label>
             <input id="address" type="text" name="adresse" formControlName="adresse">
@@ -74,6 +57,12 @@
             <label for="city">Ville</label>
             <input id="city" type="text" name="ville" formControlName="ville">
           </div>
+          <div class="form-group b">
+            <label for="first-name">Sructure </label>
+        <select  formControlName="StructureParente" >
+        <option name="StructureParente" *ngFor="let item of structure" [value]="item|json">{{item.nomStructure}}</option>
+    </select></div>
+
           <div class="textarea-group">
             <label for="bio">Description</label>
             <textarea id="bio" name="description" formControlName="description" ></textarea>

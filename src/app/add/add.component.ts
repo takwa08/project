@@ -6,11 +6,11 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Group } from '../group';
 import { GroupService } from '../group.service';
-import { Ministere } from '../ministere';
+
 import { MinistereService } from '../ministere.service';
 import { PersonService } from '../person.service';
-import { Societe } from '../societe';
-import { SocieteService } from '../societe.service';
+import { Structure } from '../structure';
+
 import { Utilisateur } from '../Utilisateur';
 
 @Component({
@@ -22,20 +22,19 @@ export class AddComponent implements OnInit {
 
 form:FormGroup
   formvalue:string=""
- gr:Group=new Group(0,"");
-user:Utilisateur=new Utilisateur(0,"","","","",0,"","","","","","",new Group(0,""),new Societe(0,"","",0,"",new Ministere(0,"","","",0,"")))
 
+user:Utilisateur=new Utilisateur(0,"","","","",0,"","","","","","",new Structure())
+structure:Structure[]=[]
 Gr: Group[] = [];
 selectedOption:string=""
 retour:string=""
 alert:boolean=false
-m:Ministere=new Ministere(0,"","","",0,"")
-ministeres:Ministere[]=[]
+
 selected :string=""
 selected_:string=""
-Societe:Societe[]=[]
+
 Employes:Utilisateur[]=[]
-constructor(private personServ:PersonService,private grpService:GroupService,private fb:FormBuilder,private route:Router,private toastr:ToastrService,private servMin:MinistereService,private servSociete:SocieteService,private servEmp:PersonService) {
+constructor(private personServ:PersonService,private grpService:GroupService,private fb:FormBuilder,private route:Router,private toastr:ToastrService,private structServ:MinistereService,private servEmp:PersonService) {
   this.form=this.fb.group(
     {
     nom:['',
@@ -73,7 +72,8 @@ constructor(private personServ:PersonService,private grpService:GroupService,pri
     description:['',
     [Validators.required,Validators.maxLength(150)]
     ],
-    group:[new Group(0,""),
+
+    StructureParente:[,
     [Validators.required]
     ],
     }
@@ -102,9 +102,18 @@ this.grpService.getAllGrp().subscribe
 }
   ngOnInit(): void {
   this.getGrp()
+ // this.getMin()
+  this.getAllstr()
   }
 
-
+  getAllstr()
+  {
+    this.structServ.getAllMinistere().subscribe(
+      (res:Structure[])=>{
+      this.structure=res
+      }
+    )
+  }
 
   Ajouter()
   {
@@ -123,8 +132,7 @@ this.user.email=this.getEmail()?.value
 this.user.numTele=this.getNumT()?.value
 this.user.adresse=this.getAdresse()?.value
 this.user.ville=this.getVille()?.value
-this.user.group=this.getGr()?.value
-
+this.user.struct=this.getStructure()?.value
 this.personServ.addEmp(this.user).subscribe
 (
 
@@ -190,35 +198,129 @@ getVille()
 {
   return this.form.get('ville')
 }
-getGr()
+
+
+
+
+getStructure()
 {
-  return  this.form.get('group')
+  return this.form.get('StructureParente')
 }
 
-public getMin()
-{
-  this.servMin.getMinistere().subscribe(
-    (res:Ministere[])=>
-    {
-      this.ministeres=res
-  console.log( this.ministeres)
-    },
-    (error:HttpErrorResponse)=>{
-      alert(error.message)
-    }
-  )
-}
-getMinistere()
-{
-  return this.form.get('ministere')
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 onEvent(event:any)
 {
 
 this.selected= event.target.value
 console.log(this.selected)
 let idMinist_=JSON.parse(this.selected) as Ministere
-this.m.Ministere_id=idMinist_.Ministere_id
+this.m.ministere_id=idMinist_.ministere_id
 this.m.nomMinistere=idMinist_.nomMinistere
 console.log(this.m)
 this.servSociete.findByIdMin(this.m.nomMinistere).subscribe(
@@ -254,6 +356,6 @@ this.servEmp.findEmpSoc(string).subscribe(
   }
 )
 
-}
+}*/
 }
 

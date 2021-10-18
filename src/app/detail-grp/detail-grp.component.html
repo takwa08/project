@@ -1,0 +1,68 @@
+  <app-navbar></app-navbar>
+  <body>
+<div class="container">
+
+  <h1 class="title">Details sur Groupe </h1>
+
+<form [formGroup]= "form" (ngSubmit)="affecter()">
+
+  <div class="form-group b">
+    <p >Nom de groupe : {{nomGp}} </p>
+  </div>
+<!------------------------------------------------------------------------------------------------>
+<!-- XXXXX Accordion -->
+<div class="XXXXX-accordion">
+
+  <div class="XXXXX-accordion__tab">
+      <input class="XXXXX-accordion__checkbox" type="checkbox" id="tab-1">
+      <label class="XXXXX-accordion__tab-label" for="tab-1">
+          <p class="XXXXX-accordion__tab-heading">Liste des employés affectés a ce groupe</p>
+          <div class="XXXXX-accordion__icon-container">
+              <span class="XXXXX-accordion__icon-plus"></span>
+              <span class="XXXXX-accordion__icon-minus"></span>
+          </div>
+      </label>
+      <div class="XXXXX-accordion__tab-content">
+         <div  *ngFor="let item of Af">{{item.employees.nom}} {{item.employees.prenom}}</div>
+      </div>
+  </div>
+
+
+</div>
+<!-- /XXXXX Accordion______________________________________________________________ -->
+
+
+
+
+
+  <div class="form-group b">
+    <label for="first-name">Affecter employé :</label>
+<select  formControlName="employe" >
+<option name="employe" *ngFor="let item of employees"  [value]="item|json"> {{item.nom}} {{item.prenom}}  </option>
+</select>
+</div>
+<div class="button-container">
+  <button class="button" type="submit"  id="ok">Affecter</button>
+</div>
+<div>
+</div>
+</form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+

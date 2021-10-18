@@ -7,6 +7,8 @@ import { GroupService } from '../group.service';
 import{NgModel}from'@angular/forms'
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { Utilisateur } from '../Utilisateur';
+import { Structure } from '../structure';
 
 @Component({
   selector: 'app-add-grp',
@@ -42,7 +44,7 @@ public addG()
 this.g.idGrp=0;
 this.g.nomGroup=this.get()?.value
 
-  this.ServGrp.addG(this.g).subscribe(
+  this.ServGrp.addGpp(this.g).subscribe(
   (response:Group)=>{
     if(response==null)
     {
@@ -64,5 +66,13 @@ this.route.navigateByUrl('/group');
 }
 
 )
+
+
+}
+
+
+onEvent(event:any)
+{
+
 }
 }

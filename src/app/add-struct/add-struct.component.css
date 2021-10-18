@@ -228,4 +228,10 @@ button.close {
     border: 0;
     -webkit-appearance: none;
 }
+select{
 
+  height: 50px;
+  border: 1px solid #d2d6db;
+	border-radius: 6px;
+
+}

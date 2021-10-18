@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -12,9 +13,16 @@ import { Utilisateur } from '../Utilisateur';
   styleUrls: ['./person.component.css']
 })
 export class PersonComponent implements OnInit {
-   employees:Utilisateur[];
-public employee:Utilisateur
-  constructor(private PersonService:PersonService,private _route:Router,private toastr:ToastrService) { }
+  etat=false
+employees:Utilisateur[];
+employee:Utilisateur
+form:FormGroup
+sts:String
+  constructor(private PersonService:PersonService,private _route:Router,private toastr:ToastrService,private fb:FormBuilder) {
+this.form=this.fb.group({
+  search_box:['',[Validators.required]]
+})
+  }
 
 public getEmployee():void
 {
@@ -43,9 +51,6 @@ this.PersonService.getAllEmp().subscribe(
 
 
   }
-
-
-
   delete(id: number):void
   {
     this.PersonService.DeleteEmp(id).subscribe
@@ -70,5 +75,16 @@ this.PersonService.getAllEmp().subscribe(
       this._route.navigateByUrl('/');
 
 
+  }
+
+
+
+
+filtrer()
+{
+this.PersonService.search(this.form.get('search_box')?.value).subscribe((res:any)=>{
+  this.etat=true;
+console.log(res)
+})
   }
 }

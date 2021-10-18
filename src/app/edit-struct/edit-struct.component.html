@@ -4,9 +4,9 @@
   <body>
 <div class="container">
 
-  <h1 class="title">Ajouter une Structure</h1>
+  <h1 class="title">Modifier Structure</h1>
 
-    <form [formGroup]="formStructure" (ngSubmit)="addStructure()">
+    <form [formGroup]="formStructure" (ngSubmit)="editStructure()">
 
       <div class="grid">
         <div class="form-group a">
@@ -46,7 +46,7 @@
           <label for="first-name">Sructure parente </label>
       <select  formControlName="StructureParente" >
         <option value={{p}}>Parent</option>
-      <option name="StructureParente" *ngFor="let item of structure" [value]="item|json">{{item.nomStructure}}</option>
+      <option name="StructureParente" *ngFor="let item of structure" [value]="item|json">{{item.structure_id}}</option>
   </select></div>
 
         </div>

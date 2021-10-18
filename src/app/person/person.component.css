@@ -11744,3 +11744,61 @@
   */
   width: auto;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.search-box{
+
+  position: relative;
+  display: flex;
+ margin-left: 1490px;
+
+}
+.search-input{
+
+  padding: 10px;
+  border: 4px solid #59a4d6;
+  border-radius:10px 0 0 10px ;
+  border-right: none;
+  outline: none;
+  font-size: 20px;
+  color: tomato;
+  background: none;
+}
+.search-button{
+
+ text-align: center;
+height: 51px;
+width: 40px;
+outline: none;
+cursor: pointer;
+border: 4px solid #59a4d6;
+ border-radius: 0 10px 10px 0 ;
+border-left: none;
+background: none;
+font-size: 20px;
+border-left: 4px solid #59a4d6;
+
+
+}
+.container{
+  width: 35%;
+;
+  left: 40%;
+  top: 40%;
+  transform: translate(-50% , -50%);
+}

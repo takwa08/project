@@ -1,43 +1,38 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { isNull } from '@angular/compiler/src/output/output_ast';
-import { noUndefined } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MinistereService } from '../ministere.service';
 import { Structure } from '../structure';
 
 @Component({
-  selector: 'app-add-struct',
-  templateUrl: './add-struct.component.html',
-  styleUrls: ['./add-struct.component.css']
+  selector: 'app-edit-struct',
+  templateUrl: './edit-struct.component.html',
+  styleUrls: ['./edit-struct.component.css']
 })
-export class AddStructComponent implements OnInit {
+export class EditStructComponent implements OnInit {
+
   p="null"
   str: Structure=new Structure();
   struct:Structure
  structure:Structure[]
   formStructure:FormGroup
-  constructor(private router:Router,private toastr:ToastrService,private fb:FormBuilder,private structServ:MinistereService) {
-   }
-   ngOnInit(): void {
-
-     this.getAllstr()
+  constructor(private router:Router,private route:ActivatedRoute,private toastr:ToastrService,private fb:FormBuilder,private structServ:MinistereService) {
     this.formStructure=this.fb.group(
-      {  code:['',
+      {  code:[,
          [Validators.required]
          ],
-           nomStructure:['',
+           nomStructure:[,
          [Validators.required]
          ],
-         nomStructure_ar:['',
+         nomStructure_ar:[,
          [Validators.required]],
 
-         emailStr:['',
+         emailStr:[ ,
          [Validators.required,Validators.email]
          ],
-         numTele:['',
+         numTele:[ ,
          [Validators.required]
          ],
          adresseWeb:['',
@@ -51,6 +46,42 @@ export class AddStructComponent implements OnInit {
          ]
      }
    )
+
+  }
+   ngOnInit(): void {
+
+     this.getAllstr()
+     this.structServ.findMinis(this.route.snapshot.params.id).subscribe(
+       (response:Structure)=>{
+      this.formStructure=this.fb.group(
+        {  code:[response.structure_id,
+           [Validators.required]
+           ],
+             nomStructure:[response.nomStructure,
+           [Validators.required]
+           ],
+           nomStructure_ar:[response.nomARStructure,
+           [Validators.required]],
+
+           emailStr:[response.emailStruct,
+           [Validators.required,Validators.email]
+           ],
+           numTele:[response.numTel_Struct,
+           [Validators.required]
+           ],
+           adresseWeb:[response.site_Struct,
+           [Validators.required]
+           ],
+           adresseSoc:[response.adresseStruct,
+           [Validators.required]
+           ],
+           StructureParente:[response.parentStruct,
+           [Validators.required]
+           ]
+       }
+     )
+     })
+
 
 
   }
@@ -88,7 +119,7 @@ getCode()
   return this.formStructure.get('code')?.value
 }
 
- addStructure()
+ editStructure()
 {
   this.str.adresseStruct=this.getAdresseSoc()
   this.str.structure_id=this.getCode()
@@ -99,13 +130,13 @@ getCode()
   this.str.site_Struct=this.getAdresseWeb()
   this.str.parentStruct=this.getMin()
   console.log(this.str)
-this.structServ.ajouterMinistere(this.str).subscribe((res:Structure)=>{
+this.structServ.updateMinistere(this.str).subscribe((res:Structure)=>{
 console.log(res)
-this.toastr.info(`la structure ${this.str.nomStructure} a été ajouté avec succèes`)
+this.toastr.info(`la structure ${this.str.nomStructure} a été modifié avec succèes`)
 this.router.navigateByUrl('/structure');
 },
 (error:HttpErrorResponse)=>
-{this.toastr.warning("Echec d'ajout veuillez verifier vos données")
+{this.toastr.warning("Echec")
 
   })}
   getAllstr()

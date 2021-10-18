@@ -7,8 +7,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Group } from '../group';
 import { GroupService } from '../group.service';
 import { ToastrService } from 'ngx-toastr';
-import { Societe } from '../societe';
-import { Ministere } from '../ministere';
+import { Structure } from '../structure';
+
+import { MinistereService } from '../ministere.service';
+
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -17,12 +19,13 @@ import { Ministere } from '../ministere';
 export class EditComponent implements OnInit {
 form:FormGroup
 Gr:Group[]=[]
+structure:Structure[]=[]
 gr:Group=new Group(0,"");
-user:Utilisateur=new Utilisateur(0,"","","","",0,"","","","","","",new Group(0,""),new Societe(0,"","",0,"",new Ministere(0,"","","",0,"")))
+user:Utilisateur=new Utilisateur(0,"","","","",0,"","","","","","",new Structure())
 // u= new Utilisateur();
 
 
-  constructor(private personSer:PersonService,private router:ActivatedRoute,private fb:FormBuilder,private grpService:GroupService,private toastr:ToastrService,private route:Router) {
+  constructor(private personSer:PersonService,private router:ActivatedRoute,private fb:FormBuilder,private grpService:GroupService,private toastr:ToastrService,private route:Router,private structServ:MinistereService) {
     this.form=this.fb.group(
       {
       nom:['',
@@ -60,19 +63,27 @@ user:Utilisateur=new Utilisateur(0,"","","","",0,"","","","","","",new Group(0,"
       description:['',
       [Validators.required,Validators.maxLength(150)]
       ],
-      group:['',
-      [Validators.required]
-      ],
+      StructureParente:[,
+        [Validators.required]
+        ],
       }
 
+    )
+  }
+  getAllstr()
+  {
+    this.structServ.getAllMinistere().subscribe(
+      (res:Structure[])=>{
+this.structure=res
+      }
     )
   }
 
   ngOnInit(): void {
    // console.log(this.router.snapshot.params.id);
+ this.getAllstr()
+//console.log(this.getAllstr())
    this.personSer.findEmpBy(this.router.snapshot.params.id);
-  this.getGrp()
-
    this.personSer.findEmpBy(this.router.snapshot.params.id).subscribe
    (
      ( response:Utilisateur)=>
@@ -114,9 +125,11 @@ user:Utilisateur=new Utilisateur(0,"","","","",0,"","","","","","",new Group(0,"
          description:[response.description,
          [Validators.required,Validators.maxLength(150)]
          ],
-         group:[response.group,
-         [Validators.required]
-         ],
+          StructureParente:[response.struct,
+          [Validators.required]
+          ],
+
+
          }
 
        )
@@ -127,25 +140,6 @@ user:Utilisateur=new Utilisateur(0,"","","","",0,"","","","","","",new Group(0,"
      });
      //document.getElementById('matricule')?.ariaDisabled
   }
-
-public getGrp():void
-{
-   //  console.log(this.getGrp())
-
-this.grpService.getAllGrp().subscribe
-(
- ( res:Group[])=>
-
-{  this.Gr=res
-  console.log(this.Gr)
-},
-
-(error:HttpErrorResponse)=>{
-  alert(error.message);
-  console.log(error)
-}
-);
-}
 
 
   editEmp()
@@ -164,7 +158,8 @@ this.user.email=this.getEmail()?.value
 this.user.numTele=this.getNumT()?.value
 this.user.adresse=this.getAdresse()?.value
 this.user.ville=this.getVille()?.value
-this.user.group=this.getGr()?.value
+this.user.struct=this.getStructure()?.value
+
 
 
     this.personSer.updateEmp(this.user).subscribe
@@ -178,6 +173,10 @@ this.user.group=this.getGr()?.value
     })
     }
 
+    getStructure()
+    {
+      return this.form.get('StructureParente')
+    }
 
 getNom(){
   return this.form.get('nom')
@@ -230,5 +229,13 @@ getGr()
 {
   return  this.form.get('group')
 }
+
+getSociet()
+{
+  return this.form.get('Societe')
 }
+
+getSociete()
+{
+}}
 

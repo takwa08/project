@@ -2,8 +2,16 @@
 <app-navbar></app-navbar>
 
 <body>
-<br><br>
+<br>
+<!--
+<form [formGroup]="form">
+  <div  class="search-box">
+    <input type="text" class="search-input" formControlName="search_box" placeholder="Rechercher..">
 
+    <button class="search-button"(click)="filtrer()">
+      <i class="fa fa-search"></i>
+    </button >
+  </div></form>-->
 <button class="button" type="submit" routerLink="/addEmp">Ajouter un(e) employé(e)</button>
 <table class="table table-striped">
   <thead>
@@ -23,8 +31,10 @@
 
        <td>{{item.numTele}}</td>
       <td><a routerLink="[/person]"  (click)="delete(item.matricule)" ><i class="fa fa-trash" aria-hidden="true"style="font-size:25px;color:blue;"></i></a>&nbsp;
-        &nbsp;  <a [routerLink]="['/edit',item.matricule]"  routerLinkActive="router-link-active" ><i class="fa fa-edit" style="font-size:25px;color:blue;" (click)="editR(item.matricule)"></i></a> &nbsp;&nbsp;<i style="font-size:25px;color:blue;"  class="fa fa-info-circle"></i></td>
-    </tr>
+        &nbsp;  <a [routerLink]="['/edit',item.matricule]"  routerLinkActive="router-link-active" ><i class="fa fa-edit" style="font-size:25px;color:blue;" (click)="editR(item.matricule)"></i></a> &nbsp;&nbsp;<a [routerLink]="['/details',item.matricule]"  routerLinkActive="router-link-active" ><i style="font-size:25px;color:blue;"  class="fa fa-info-circle"></i></a>
+      </td>
+
+      </tr>
 
   </tbody>
 </table>

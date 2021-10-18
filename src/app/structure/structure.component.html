@@ -13,14 +13,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of ministeres">
-        <th scope="row">{{item.Ministere_id}}</th>
-        <td>{{item.nomMinistere}}</td>
-        <td>{{item.numTel_Min}}</td>
-        <td><a ><i class="fa fa-trash" aria-hidden="true"style="font-size:25px;color:blue;"></i></a>&nbsp;
-          &nbsp;  <a routerLinkActive="router-link-active" ><i class="fa fa-edit" style="font-size:25px;color:blue;"></i></a> &nbsp;&nbsp;<i style="font-size:25px;color:blue;"  class="fa fa-info-circle"></i></td>
+      <tr *ngFor="let item of struct">
+        <th scope="row">{{item.structure_id}}</th>
+        <td> {{item.nomStructure}} </td>
+        <td> {{item.numTel_Struct}} </td>
+        <td><a routerLink="[/structure]" routerLinkActive="router-link-active"  (click)="deleteStr(item.structure_id)"><i class="fa fa-trash" aria-hidden="true"style="font-size:25px;color:blue;"></i></a>&nbsp;
+          &nbsp;  <a [routerLink]="['/editStruct',item.structure_id]" routerLinkActive="router-link-active" ><i class="fa fa-edit" style="font-size:25px;color:blue;"></i> </a>
+           &nbsp;&nbsp;<a routerLinkActive="router-link-active" [routerLink]="['/detailStructure',item.structure_id]" structure_id><i style="font-size:25px;color:blue;" class="fa fa-info-circle"></i></a></td>
       </tr>
 
     </tbody>
   </table>
 </body>
+<!---->

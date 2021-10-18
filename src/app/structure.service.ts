@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Ministere } from './ministere';
+import { Structure } from './structure';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +9,22 @@ import { Ministere } from './ministere';
 export class StructureService {
 
   constructor(private http:HttpClient) { }
-public getAllStructure():Observable<Ministere>
+
+
+public addStructure(structure:Structure):Observable<Structure>
 {
-  return this.http.get<Ministere>("http://localhost:4200/Structure");
+
+
+return this.http.post<Structure>("",structure)
 }
+
+public deleteStructure(idStruct:number)
+{
+return this.http.delete("")
+}
+
+
+
 
 
 }
