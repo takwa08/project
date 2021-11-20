@@ -41,6 +41,9 @@ public getEmp(id :number):Observable<Affectation[]>
   return this.http.get<Affectation[]>(`http://localhost:8084/getEmp/${id}`)
 }
 
-
+public deleteEmpFromGroup(id:number):Observable<Affectation>
+{
+return this.http.delete<Affectation>(`http://localhost:8084/deleteEmpInGrp/${id}`)
+}
 
 }

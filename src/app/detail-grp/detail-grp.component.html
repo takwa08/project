@@ -23,8 +23,11 @@
           </div>
       </label>
       <div class="XXXXX-accordion__tab-content">
-         <div  *ngFor="let item of Af">{{item.employees.nom}} {{item.employees.prenom}}</div>
-      </div>
+         <div  *ngFor="let item of Af">
+          <a routerLink="/group" (click)="deleteEmpFromGroupe(item.employees.matricule)" routerLinkActive="router-link-active"  ><i class="fa fa-trash" aria-hidden="true"style="font-size:25px;color:blue;"></i></a>
+     &nbsp;
+          {{item.employees.nom}} {{item.employees.prenom}}</div>
+          </div>
   </div>
 
 

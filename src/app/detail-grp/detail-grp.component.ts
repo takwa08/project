@@ -97,4 +97,25 @@ this.Af=res
 console.log(this.Af)
   })
 }
+deleteEmpFromGroupe(idEmp:number)
+{
+
+  this.Affec.deleteEmpFromGroup(idEmp).subscribe(
+    () =>   {
+
+      this.toastr.success(`L'employé a ete supprimé du groupe `);
+      this.router.navigateByUrl(`/group`);
+ },
+
+    (error:HttpErrorResponse)=>{
+
+    //  alert(error.message);
+      console.log(error)
+      if(error.status==500)
+      {
+       this.toastr.error(`Echec de suppression  `)
+      }
+    }
+    );
+}
 }
