@@ -1,6 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { CATCH_ERROR_VAR } from '@angular/compiler/src/output/abstract_emitter';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Structure } from './structure';
 
 @Injectable({
@@ -37,12 +38,13 @@ export class MinistereService {
   }
   public removeStructure(Ministere_id:number):Observable<Structure>
   {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
     return this.http.delete<Structure>(`http://localhost:8084/delete/${Ministere_id}`)
   }
 
   updateMinistere(ministere:Structure):Observable<Structure>
   {const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
-  console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
+
 
 
   let l;

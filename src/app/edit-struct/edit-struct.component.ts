@@ -15,8 +15,8 @@ export class EditStructComponent implements OnInit {
 
   p="null"
   str: Structure=new Structure();
-  struct:Structure
- structure:Structure[]
+struct:Structure
+structure:Structure[]
   formStructure:FormGroup
   constructor(private router:Router,private route:ActivatedRoute,private toastr:ToastrService,private fb:FormBuilder,private structServ:MinistereService) {
     this.formStructure=this.fb.group(
@@ -132,7 +132,7 @@ getCode()
   console.log(this.str)
 this.structServ.updateMinistere(this.str).subscribe((res:Structure)=>{
 console.log(res)
-this.toastr.info(`la structure ${this.str.nomStructure} a été modifié avec succèes`)
+this.toastr.success(`la structure ${this.str.nomStructure} a été modifié avec succèes`)
 this.router.navigateByUrl('/structure');
 },
 (error:HttpErrorResponse)=>

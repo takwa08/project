@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -19,7 +19,7 @@ import { AddComponent } from './add/add.component';
 import { Nav1Component } from './nav1/nav1.component';
 import { AddGrpComponent } from './add-grp/add-grp.component';
 import { EditGrpComponent } from './edit-grp/edit-grp.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import{BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AddStructComponent } from './add-struct/add-struct.component';
@@ -68,7 +68,9 @@ ReactiveFormsModule,
 
 
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

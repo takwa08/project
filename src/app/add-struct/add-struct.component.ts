@@ -101,7 +101,7 @@ getCode()
   console.log(this.str)
 this.structServ.ajouterMinistere(this.str).subscribe((res:Structure)=>{
 console.log(res)
-this.toastr.info(`la structure ${this.str.nomStructure} a été ajouté avec succèes`)
+this.toastr.success(`la structure ${this.str.nomStructure} a été ajouté avec succèes`)
 this.router.navigateByUrl('/structure');
 },
 (error:HttpErrorResponse)=>
